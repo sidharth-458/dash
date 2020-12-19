@@ -14,7 +14,7 @@ pygame.init()
 size_x = 800
 size_y = 480
 screen = pygame.display.set_mode((800, 480))
-bg_surface = pygame.image.load('initialdashpicnew.png').convert()
+bg_surface = pygame.image.load('initialdashpicnew.png').convert_alpha()
 game_font = pygame.font.Font('04B_19.ttf', 60)
 clock = pygame.time.Clock()
 
@@ -52,14 +52,16 @@ while True:
             pygame.quit()
             sys.exit()
     screen.fill(white)
-    screen.blit(bg_surface, (0, 0))
+
     if menu_var == 0:
         # #screen.fill(white)
         # pygame.gfxdraw.aacircle(screen, 200, 280, 100, blue)
         # pygame.gfxdraw.aacircle(screen, 200, 280, 10, blue)
         # pygame.gfxdraw.aacircle(screen, 600, 280, 100, blue)
         # pygame.gfxdraw.line(screen, 0, 350, 800, 350, blue)
-        # pygame.gfxdraw.pie(screen, 200, 280, 90, int(velocity_deg), int(velocity_deg), blue)
+        pygame.gfxdraw.pie(screen, 160, 320, 150, int(velocity_deg), int(velocity_deg), black)
+        screen.blit(bg_surface, (0, 0))
+
         score_surface = game_font.render(f'{str(velocity_deg)}', True, (255, 255, 255))
         score_rect = score_surface.get_rect(center=(160, 320))
         screen.blit(score_surface, score_rect)
@@ -80,5 +82,7 @@ while True:
 
     pygame.display.update()
     clock.tick(120)
+
+
 
 
